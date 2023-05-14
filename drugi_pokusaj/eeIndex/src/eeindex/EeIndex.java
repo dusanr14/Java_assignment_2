@@ -551,7 +551,7 @@ public class EeIndex extends javax.swing.JFrame {
            }else{
                System.out.println("Adding subject failed. Summation of max points per part not 100!");
            }
-           
+           saveStudents();
         }
     }//GEN-LAST:event_btnAddSubjectActionPerformed
 
@@ -568,7 +568,7 @@ public class EeIndex extends javax.swing.JFrame {
             
             Student stud = new Student(name, lastName, JMBG, userName, password);
             students.add(stud);
-            
+            saveStudents();
             User newUser = new User(userName, password, "student");
             users.add(newUser);
             saveUsers();
@@ -748,7 +748,7 @@ public class EeIndex extends javax.swing.JFrame {
             for (Subject sub : subjects) {
                 String sub_string = sub.getSubjectName()+" "+ sub.getNumberOfParts();
                 for(int i = 0; i < sub.getNumberOfParts(); i++){
-                    sub_string+=" " + sub.getParts_name().get(i);
+                    sub_string+=" " + sub.getPartsName().get(i);
                 }
                 for(int i = 0; i < sub.getNumberOfParts(); i++){
                     sub_string+=" " + sub.getMaxPoints().get(i);
@@ -819,6 +819,10 @@ public class EeIndex extends javax.swing.JFrame {
                                     +" "+ stud.getUserName()+" "+ stud.getPassword()+" "+ stud.getNumOfSubjects();
                 for(int j = 0; j < stud.getNumOfSubjects(); j++){   
                     sub_string += " " +stud.getSubjects().get(j).getSubjectName() +  " " +stud.getSubjects().get(j).getNumberOfParts();
+                    
+                    for(int i = 0; i < stud.getSubjects().get(j).getNumberOfParts(); i++){
+                        sub_string+=" " + stud.getSubjects().get(j).getPartsName().get(i);
+                    }
                     
                     for(int i = 0; i < stud.getSubjects().get(j).getNumberOfParts(); i++){
                         sub_string+=" " + stud.getSubjects().get(j).getMaxPoints().get(i);

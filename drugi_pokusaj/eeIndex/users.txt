@@ -9,3 +9,5 @@ as:as:admin
 saka:slaka:student
 m:m:student
 t:t:student
+da:da:student
+dr:dr:student

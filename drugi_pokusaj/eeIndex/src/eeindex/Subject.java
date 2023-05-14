@@ -37,7 +37,7 @@ class Subject {
         this.grade = grade;
     }
 
-    public ArrayList<String> getParts_name() {
+    public ArrayList<String> getPartsName() {
         return partsName;
     }
 
