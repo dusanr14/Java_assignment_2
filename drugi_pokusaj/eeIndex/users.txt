@@ -13,3 +13,9 @@ da:da:student
 dr:dr:student
 re:re:student
 dusaida:dusaida:student
+pere:pere:student
+sdffd:sdffds:student
+ty:ty:student
+p:p:student
+asd:asd:student
+asd:asd:student

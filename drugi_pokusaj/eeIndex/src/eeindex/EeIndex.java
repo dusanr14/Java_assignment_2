@@ -51,7 +51,7 @@ public class EeIndex extends javax.swing.JFrame {
         tfPassword = new javax.swing.JTextField();
         btnConnect = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        taInfo = new javax.swing.JTextArea();
         labelAddStudent = new javax.swing.JLabel();
         labelStudName = new javax.swing.JLabel();
         labelStudLastName = new javax.swing.JLabel();
@@ -83,11 +83,12 @@ public class EeIndex extends javax.swing.JFrame {
         tfNumOfParts = new javax.swing.JTextField();
         btnAddSubject = new javax.swing.JButton();
         cbSubjects = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btnAddToStd = new javax.swing.JButton();
         labelSelectStud = new javax.swing.JLabel();
         cbSelStud = new javax.swing.JComboBox<>();
         lIndex = new javax.swing.JLabel();
         tfIndex = new javax.swing.JTextField();
+        btnCheckScore = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,10 +125,10 @@ public class EeIndex extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setEnabled(false);
-        jScrollPane1.setViewportView(jTextArea1);
+        taInfo.setColumns(20);
+        taInfo.setRows(5);
+        taInfo.setEnabled(false);
+        jScrollPane1.setViewportView(taInfo);
 
         labelAddStudent.setBackground(new java.awt.Color(102, 255, 102));
         labelAddStudent.setText("Add new Student:");
@@ -225,7 +226,8 @@ public class EeIndex extends javax.swing.JFrame {
 
         cbSubjects.setEnabled(false);
 
-        jButton1.setText("Add to student");
+        btnAddToStd.setText("Add to student");
+        btnAddToStd.setEnabled(false);
 
         labelSelectStud.setText("Selektruj studenta:");
         labelSelectStud.setEnabled(false);
@@ -237,6 +239,14 @@ public class EeIndex extends javax.swing.JFrame {
         lIndex.setEnabled(false);
 
         tfIndex.setEnabled(false);
+
+        btnCheckScore.setText("Check subj score");
+        btnCheckScore.setEnabled(false);
+        btnCheckScore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckScoreActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout labelSubjectMaxLayout = new javax.swing.GroupLayout(labelSubjectMax);
         labelSubjectMax.setLayout(labelSubjectMaxLayout);
@@ -319,10 +329,10 @@ public class EeIndex extends javax.swing.JFrame {
                                                         .addGap(21, 21, 21)
                                                         .addComponent(tfNumOfParts)
                                                         .addGap(6, 6, 6))))))))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(labelSubjectMaxLayout.createSequentialGroup()
-                                .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAddAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(labelSubjectMaxLayout.createSequentialGroup()
+                                .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, labelSubjectMaxLayout.createSequentialGroup()
                                         .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(labelPasswordAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(labelUsernameAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -332,15 +342,18 @@ public class EeIndex extends javax.swing.JFrame {
                                                 .addComponent(tbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, labelSubjectMaxLayout.createSequentialGroup()
                                                 .addGap(4, 4, 4)
-                                                .addComponent(tbUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                .addComponent(tbUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnCheckScore, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, labelSubjectMaxLayout.createSequentialGroup()
+                                        .addComponent(btnAddAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cbSubjects, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
-                                .addComponent(cbSubjects, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(btnAddToStd, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 18, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                 .addContainerGap())
         );
         labelSubjectMaxLayout.setVerticalGroup(
@@ -417,8 +430,10 @@ public class EeIndex extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(cbSubjects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1))
-                                .addGap(80, 80, 80))
+                                    .addComponent(btnAddToStd))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCheckScore)
+                                .addGap(48, 48, 48))
                             .addGroup(labelSubjectMaxLayout.createSequentialGroup()
                                 .addGap(13, 13, 13)
                                 .addComponent(jLabel1)
@@ -475,7 +490,7 @@ public class EeIndex extends javax.swing.JFrame {
     private void btnConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConnectActionPerformed
         // TODO add your handling code here:
         if(this.login(tfUserName.getText(),tfPassword.getText(),cbAdmin.isSelected()) == 1){
-            jTextArea1.setEnabled(true);
+            taInfo.setEnabled(true);
             labelAddStudent.setEnabled(true);
             labelStudName.setEnabled(true);
             labelStudLastName.setEnabled(true);
@@ -510,8 +525,14 @@ public class EeIndex extends javax.swing.JFrame {
             cbSelStud.setEnabled(true);
             lIndex.setEnabled(true);
             tfIndex.setEnabled(true);
+            btnAddToStd.setEnabled(true);
+            cbSubjects.setEnabled(true);
+            cbSelStud.setEnabled(true);
         }else if(this.login(tfUserName.getText(),tfPassword.getText(),cbAdmin.isSelected()) == 2){
-            System.out.println("Student: ");
+            //System.out.println("Student logged: ");
+            cbSubjects.setEnabled(true);
+            btnCheckScore.setEnabled(true);
+            
         }
         
         ArrayList<String> cbSubj = new ArrayList<>();
@@ -522,12 +543,11 @@ public class EeIndex extends javax.swing.JFrame {
         
         ArrayList<String> cbStud = new ArrayList<>();
         for (int i = 0; i < students.size(); i++) {
-            cbStud.add(students.get(i).getName());
+            cbStud.add(students.get(i).getIndex());
         }
         cbSelStud.setModel(new DefaultComboBoxModel<String>(cbStud.toArray(new String[0])));
         
-        cbSubjects.setEnabled(true);
-        cbSelStud.setEnabled(true);
+        
     }//GEN-LAST:event_btnConnectActionPerformed
 
     private void btnAddAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAdminActionPerformed
@@ -574,11 +594,11 @@ public class EeIndex extends javax.swing.JFrame {
                 Subject newSubject = new Subject(subjName, numOfParts, partsName, maxSubject, minSubject);
                 subjects.add(newSubject);
                 saveSubjects();
+                cbSubjects.addItem(subjName);
                 System.out.println("Subject "+ subjName +" added");
            }else{
                System.out.println("Adding subject failed. Summation of max points per part not 100!");
            }
-           saveStudents();
         }
     }//GEN-LAST:event_btnAddSubjectActionPerformed
 
@@ -593,17 +613,54 @@ public class EeIndex extends javax.swing.JFrame {
             String index = tfIndex.getText();
             String userName = tbStudUsername.getText();
             String password = tbStudPassword.getText();
-            
-            Student stud = new Student(name, lastName, JMBG,index, userName, password);
-            students.add(stud);
-            saveStudents();
-            User newUser = new User(userName, password, "student");
-            users.add(newUser);
-            saveUsers();
-            System.out.println("Student"+ name +" "+ lastName + " added.");
+            if(checkIndex(index) && checkJmbg(JMBG)){
+                Student stud = new Student(name, lastName, JMBG,index, userName, password);
+                students.add(stud);
+                saveStudents();
+                User newUser = new User(userName, password, "student");
+                users.add(newUser);
+                saveUsers();
+                System.out.println("Student"+ name +" "+ lastName + " added.");
+            cbSelStud.addItem(index);
+            }else{
+                if(!checkIndex(index)){
+                    System.out.println("Neispravan unos indeksa");
+                }
+                
+            }
         }
         
     }//GEN-LAST:event_btnAddStudentActionPerformed
+
+    private void btnCheckScoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckScoreActionPerformed
+        // TODO add your handling code here:
+        String username = tfUserName.getText();
+        Student stud = null;
+        for(Student s: students){
+            if(username.equals(s.getUserName())){
+                stud = s;
+                break;
+            }
+        }
+        String message = new String();
+        message ="Ime: "+ stud.getName() + "\n";
+        message += "Prezime: "+stud.getLastName() + "\n";
+        
+        Subject subj = null;
+        
+        for(Subject subject: stud.getSubjects()){
+            if(subject.getSubjectName().equals(cbSubjects.getSelectedItem().toString())){
+                subj = subject;
+                break;
+            }
+        }
+        message += "Ime predmeta: "+subj.getSubjectName() + "\n";
+        for(int i = 0; i < subj.getNumberOfParts(); i++){
+            message += (i+1) + ". deo: "+ subj.getPartsName().get(i)+": " + subj.getObtainedPoints().get(i)+ "\n";
+        }
+        message += "Grade: "+subj.getGrade() + "\n";
+        taInfo.setText(message);
+    }//GEN-LAST:event_btnCheckScoreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -653,16 +710,16 @@ public class EeIndex extends javax.swing.JFrame {
     private javax.swing.JButton btnAddAdmin;
     private javax.swing.JButton btnAddStudent;
     private javax.swing.JButton btnAddSubject;
+    private javax.swing.JButton btnAddToStd;
+    private javax.swing.JButton btnCheckScore;
     private javax.swing.JButton btnConnect;
     private javax.swing.JButton btnStart;
     private javax.swing.JCheckBox cbAdmin;
     private javax.swing.JComboBox<String> cbSelStud;
     private javax.swing.JComboBox<String> cbSubjects;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lIndex;
     private javax.swing.JLabel labelAddStudent;
     private javax.swing.JLabel labelNumOfParts;
@@ -681,6 +738,7 @@ public class EeIndex extends javax.swing.JFrame {
     private javax.swing.JLabel labelSubjectParts;
     private javax.swing.JLabel labelUsername;
     private javax.swing.JLabel labelUsernameAdmin;
+    private javax.swing.JTextArea taInfo;
     private javax.swing.JTextField tbPassword;
     private javax.swing.JTextField tbStudJMBG;
     private javax.swing.JTextField tbStudLastName;
@@ -873,6 +931,58 @@ public class EeIndex extends javax.swing.JFrame {
             System.err.println("Error saving users: " + e.getMessage());
         }
     }
+    private static boolean checkIndex(String index) {
+        boolean temp1 = (index.length() == 7) ;
+        if(temp1) System.out.println("1");
+        boolean temp2 = (index.charAt(0) == 'e' || index.charAt(0) == 'E') ;
+        if(temp2) System.out.println("2");
+        
+        boolean temp3 = index.charAt(1) == '1' || index.charAt(1) == '2' || index.charAt(1) == '3';
+        if(temp3) System.out.println("3");
+        boolean temp4 = index.charAt(2) == '/' || index.charAt(2) == '-';
+        if(temp4) System.out.println("4");
+        String year = new String();
+        year = index.charAt(3) + "" + index.charAt(4) + "" + index.charAt(5) + ""  + index.charAt(6);
+        System.out.println(year);
+        boolean temp5 = Integer.parseInt(year) >= 2000 || Integer.parseInt(year) <= 2023;
+        if(temp5) System.out.println("5");
+        boolean temp = temp1 && temp2 && temp3 && temp4 && temp5;
+        
+        return temp;
+    }
+    
+    private static boolean checkJmbg(String jmbg) {
+        boolean temp1 = (jmbg.length() == 13) ;
+        String day = jmbg.charAt(0) + "" + jmbg.charAt(1);
+        String month = jmbg.charAt(2) + "" + jmbg.charAt(3);
+        String year = jmbg.charAt(4) + "" + jmbg.charAt(5)+ "" + jmbg.charAt(6);
+        
+        int day_n = Integer.parseInt(day);
+        int month_n = Integer.parseInt(month);
+        int year_n = Integer.parseInt(year);
+        System.out.println(day_n + " "+ month_n + " " + year_n);
+       boolean temp31 = (month_n == 1) || (month_n == 3) || (month_n == 5) 
+               || (month_n == 7) || (month_n == 8) || (month_n == 10) || 
+               (month_n == 11) || (month_n == 12);
+       boolean temp30 = (month_n == 4) || (month_n == 6) || (month_n == 9) || (month_n == 10);
+       boolean temp28 = (month_n == 2);
+       
+       boolean temp_day_date = false;
+       if(temp31 && (day_n <= 31)){
+           temp_day_date = true;
+       }
+       if(temp30 && (day_n <= 30)){
+           temp_day_date = true;
+       }
+       if(temp28 && (day_n <= 28)){
+           temp_day_date = true;
+       }
+       
+       boolean temp_year = (year_n >= 990) || (year_n <= 999);
+       
+       return (temp1 && temp_day_date && temp_year);
+}
+    
 }
 
 
