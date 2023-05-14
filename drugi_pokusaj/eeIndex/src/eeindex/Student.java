@@ -14,31 +14,37 @@ public class Student {
     private String name;
     private String lastName;
     private String jmbg;
+    private String index;
     private String userName;
     private String password;
     private int numOfSubjects;
     private  ArrayList<Subject> subjects;
 
-    public Student(String name, String lastName, String jmbg, String userName, String password) {
+    public Student(String name, String lastName, String jmbg, String index, String userName, String password) {
         this.name = name;
         this.lastName = lastName;
         this.jmbg = jmbg;
+        this.index = index;
         this.userName = userName;
         this.password = password;
         this.numOfSubjects = 0;
     }
 
-    public Student(String name, String lastName, String jmbg, String userName, String password, int numOfSubjects, ArrayList<Subject> subjects) {
+    public Student(String name, String lastName, String jmbg, String index, String userName, String password, int numOfSubjects, ArrayList<Subject> subjects) {
         this.name = name;
         this.lastName = lastName;
         this.jmbg = jmbg;
+        this.index = index;
         this.userName = userName;
         this.password = password;
         this.numOfSubjects = numOfSubjects;
         this.subjects = subjects;
     }
+
+    public String getIndex() {
+        return index;
+    }
     
-        
     public String getName() {
         return name;
     }
@@ -97,7 +103,7 @@ public class Student {
     
     public void printSubject(){
         String string;
-        string = this.getName()+" "+this.getLastName()+" "+this.getJmbg()+" "+this.getUserName()+" "+this.getPassword()+" "+this.getNumOfSubjects()+" ";
+        string = this.getName()+" "+this.getLastName()+" "+this.getJmbg()+" "+this.getIndex()+" "+this.getUserName()+" "+this.getPassword()+" "+this.getNumOfSubjects()+" ";
         for(Subject s: subjects){
             string += s.printSubject();
         }

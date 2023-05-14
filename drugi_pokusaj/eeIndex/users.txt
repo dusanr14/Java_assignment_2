@@ -11,3 +11,5 @@ m:m:student
 t:t:student
 da:da:student
 dr:dr:student
+re:re:student
+dusaida:dusaida:student
