@@ -66,19 +66,63 @@ class Subject {
     }
 
     public int getGrade() {
-        /*int temp;
-        boolean fail = false;
-        for(int i = 0;i < this.getNumberOfParts(); i++){
-            if(obtainedPoints.get(i) < minPoints.get(i)){
-                fail = true;
-            }
-        }
-        */
         return grade;
     }
 
     public void setGrade(int grade) {
         this.grade = grade;
+    }
+    
+    public void changePoints(String partName, int points) {
+        int temp;
+        for(int i = 0; i < this.partsName.size(); i++){
+            if(this.partsName.get(i).equals(partName)){
+                temp = i;
+                if(points < this.maxPoints.get(temp)){
+                    this.obtainedPoints.set(temp, points);
+                    System.out.println("Points succesfully changed");
+                    calculateGrade();
+                }
+                break;
+            }
+        }
+    }
+    
+    public int calculateGrade() {
+        int points = 0;
+        int temp_grade = 5;
+        boolean temp = true;
+        for(Integer op: obtainedPoints){
+            points += op;
+        }
+        if (points < 51) {
+            temp_grade =  5;
+        } else if (points < 61) {
+            temp_grade = 6;
+        } else if (points < 71) {
+            temp_grade = 7;
+        } else if (points < 81) {
+            temp_grade = 8;
+        } else if (points < 91) {
+            temp_grade = 9;
+        } else if (points < 101){
+            temp_grade = 10;
+        }else{
+            return 0;
+        }
+        
+        for(int i = 0; i < this.getNumberOfParts(); i++){
+            if(this.obtainedPoints.get(i) < this.minPoints.get(i)){
+                temp = false;
+                break;
+            }
+        }
+        if(temp){
+            this.grade = temp_grade;
+        }else{
+            this.grade = 5;
+        }
+        return temp_grade;
     }
     
     public String printSubject(){
