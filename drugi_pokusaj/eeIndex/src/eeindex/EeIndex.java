@@ -517,6 +517,8 @@ public class EeIndex extends javax.swing.JFrame {
 
     private void btnAddSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSubjectActionPerformed
         // TODO add your handling code here:
+        int tempSumCheck = 0;
+        
         if(!tfSubjectName.getText().equals("") && !tfNumOfParts.getText().equals("") 
            && !tfSubjectParts.getText().equals("") && !tfSubjectMax.getText().equals("")
            && !tfSubjMin.getText().equals("")){
@@ -533,6 +535,7 @@ public class EeIndex extends javax.swing.JFrame {
            String[] tokensMax = tfSubjectMax.getText().split(" ");
            for(int i = 0; i < numOfParts; i++){
                maxSubject.add(Integer.parseInt(tokensMax[i]));
+               tempSumCheck += Integer.parseInt(tokensMax[i]);
            }
            ArrayList<Integer> minSubject = new ArrayList<Integer>();
            String[] tokensMin = tfSubjMin.getText().split(" ");
@@ -540,10 +543,15 @@ public class EeIndex extends javax.swing.JFrame {
                minSubject.add(Integer.parseInt(tokensMin[i]));
            }
            
-           Subject newSubject = new Subject(subjName, numOfParts, partsName, maxSubject, minSubject);
-           subjects.add(newSubject);
-           saveSubjects();
-            System.out.println("Subject "+ subjName +" added");
+           if(tempSumCheck == 100){
+                Subject newSubject = new Subject(subjName, numOfParts, partsName, maxSubject, minSubject);
+                subjects.add(newSubject);
+                saveSubjects();
+                System.out.println("Subject "+ subjName +" added");
+           }else{
+               System.out.println("Adding subject failed. Summation of max points per part not 100!");
+           }
+           
         }
     }//GEN-LAST:event_btnAddSubjectActionPerformed
 
