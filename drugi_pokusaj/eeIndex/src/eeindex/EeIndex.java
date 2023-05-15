@@ -600,6 +600,7 @@ public class EeIndex extends javax.swing.JFrame {
             cbSubjects.setEnabled(true);
             btnCheckScore.setEnabled(true);
             cbAdmin.setEnabled(false);
+            taInfo.setEnabled(true);
         }
         
         ArrayList<String> cbSubj = new ArrayList<>();
@@ -688,10 +689,10 @@ public class EeIndex extends javax.swing.JFrame {
                 users.add(newUser);
                 saveUsers();
                 System.out.println("Student"+ name +" "+ lastName + " added.");
-            cbSelStud.addItem(index);
+                cbSelStud.addItem(index);
             }else{
                 if(!checkIndex(index)){
-                    System.out.println("Neispravan unos indeksa");
+                    System.out.println("Not correct index format.");
                 }
                 
             }
@@ -701,6 +702,7 @@ public class EeIndex extends javax.swing.JFrame {
 
     private void btnCheckScoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckScoreActionPerformed
         // TODO add your handling code here:
+        saveStudents();
         boolean tempExists = false;
         Student stud = null;
         if(!cbAdmin.isSelected()) {
@@ -716,14 +718,14 @@ public class EeIndex extends javax.swing.JFrame {
             for(Student s: students){
                 if(index.equals(s.getIndex())){
                     stud = s;
-                    System.out.println("Student pronadjen");
+                    System.out.println("Student found. ");
                     break;
                 }
             }
         }
         String message = new String();
-        message ="Ime: "+ stud.getName() + "\n";
-        message += "Prezime: "+stud.getLastName() + "\n";
+        message ="Name: "+ stud.getName() + "\n";
+        message += "Last name: "+stud.getLastName() + "\n";
         
         Subject subj = null;
         
@@ -735,26 +737,27 @@ public class EeIndex extends javax.swing.JFrame {
             }
         }
         if(tempExists == true){
-        message += "Ime predmeta: "+subj.getSubjectName() + "\n";
-        
-        int allPoints = 0;
-        for (int i = 0; i < subj.getNumberOfParts(); i++){
-            allPoints += subj.getObtainedPoints().get(i);
-        }
-        for(int i = 0; i < subj.getNumberOfParts(); i++){
-            message += (i+1) + ". deo: "+ subj.getPartsName().get(i)+": " + subj.getObtainedPoints().get(i)+
-                    " max: "+ subj.getMaxPoints().get(i) + " min: "+ subj.getMinPoints().get(i)  +"\n";
-        }
-        message += "Summ points:" +allPoints + "\n";
-        message += "Grade: "+subj.getGrade() + "\n";
-        taInfo.setText(message);
+            message += "Subject name: "+subj.getSubjectName() + "\n";
+
+            int allPoints = 0;
+            for (int i = 0; i < subj.getNumberOfParts(); i++){
+                allPoints += subj.getObtainedPoints().get(i);
+            }
+            for(int i = 0; i < subj.getNumberOfParts(); i++){
+                message += (i+1) + ". deo: "+ subj.getPartsName().get(i)+": " + subj.getObtainedPoints().get(i)+
+                        " max: "+ subj.getMaxPoints().get(i) + " min: "+ subj.getMinPoints().get(i)  +"\n";
+            }
+            message += "Sum points:" +allPoints + "\n";
+            message += "Grade: "+subj.getGrade() + "\n";
+            taInfo.setText(message);
         }else{
-             taInfo.setText("Izabrani student ne pohadja izabrani predmet");
+             taInfo.setText("Student does not have selected subject.");
         }
     }//GEN-LAST:event_btnCheckScoreActionPerformed
 
     private void btnAddToStdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToStdActionPerformed
-
+        
+        saveStudents();
         boolean alreadyAdded = false;
         boolean subjectExists = false;
         
@@ -867,7 +870,6 @@ public class EeIndex extends javax.swing.JFrame {
         for(Student st: students){
             st.printSubject();
         }
-        System.out.println("MAKSI MAKSI MAKSI MAKSI MAAKSIMALNO " + students.get(0).getSubjects().get(0).getMaxPoints().get(0));
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

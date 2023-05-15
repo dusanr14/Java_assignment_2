@@ -23,3 +23,7 @@ nata:nata123:student
 mita:mita1:student
 perica:1234:student
 pera:perica123:student
+aca:acaca:student
+pere123:123:student
+rq:rq:student
+re:re:student
