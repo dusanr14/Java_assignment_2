@@ -62,8 +62,7 @@ class Subject {
     }
     
     public void setObtainedPointsPart(int points, int position) {
-        if(this.maxPoints.get(position) > points)
-        this.obtainedPoints.set(position, points);
+        if(this.maxPoints.get(position) > points) this.obtainedPoints.set(position, points);
     }
 
     public void setObtained_points(ArrayList<Integer> obtained_points) {
@@ -78,19 +77,8 @@ class Subject {
         this.grade = grade;
     }
     
-    public void changePoints(String partName, int points) {
-        int temp;
-        for(int i = 0; i < this.partsName.size(); i++){
-            if(this.partsName.get(i).equals(partName)){
-                temp = i;
-                if(points < this.maxPoints.get(temp)){
-                    this.obtainedPoints.set(temp, points);
-                    System.out.println("Points succesfully changed");
-                    calculateGrade();
-                }
-                break;
-            }
-        }
+    public void changePoints(int position, int points) {
+        this.obtainedPoints.set(position, points);
     }
     
     public int calculateGrade() {

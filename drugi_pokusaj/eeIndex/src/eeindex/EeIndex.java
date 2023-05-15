@@ -89,6 +89,12 @@ public class EeIndex extends javax.swing.JFrame {
         lIndex = new javax.swing.JLabel();
         tfIndex = new javax.swing.JTextField();
         btnCheckScore = new javax.swing.JButton();
+        lChangeScore = new javax.swing.JLabel();
+        tfPartName = new javax.swing.JTextField();
+        lPartName = new javax.swing.JLabel();
+        lPoints = new javax.swing.JLabel();
+        tfPoints = new javax.swing.JTextField();
+        btnChange = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -234,7 +240,7 @@ public class EeIndex extends javax.swing.JFrame {
             }
         });
 
-        labelSelectStud.setText("Selektruj studenta:");
+        labelSelectStud.setText("Select student:");
         labelSelectStud.setEnabled(false);
 
         cbSelStud.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -245,11 +251,32 @@ public class EeIndex extends javax.swing.JFrame {
 
         tfIndex.setEnabled(false);
 
-        btnCheckScore.setText("Check subj score");
+        btnCheckScore.setText("Check score");
         btnCheckScore.setEnabled(false);
         btnCheckScore.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCheckScoreActionPerformed(evt);
+            }
+        });
+
+        lChangeScore.setText("Change score:");
+        lChangeScore.setEnabled(false);
+
+        tfPartName.setEnabled(false);
+
+        lPartName.setText("Part name:");
+        lPartName.setEnabled(false);
+
+        lPoints.setText("Points:");
+        lPoints.setEnabled(false);
+
+        tfPoints.setEnabled(false);
+
+        btnChange.setText("change");
+        btnChange.setEnabled(false);
+        btnChange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangeActionPerformed(evt);
             }
         });
 
@@ -260,104 +287,118 @@ public class EeIndex extends javax.swing.JFrame {
             .addGroup(labelSubjectMaxLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, labelSubjectMaxLayout.createSequentialGroup()
+                    .addGroup(labelSubjectMaxLayout.createSequentialGroup()
                         .addComponent(btnAddStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(labelSelectStud, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbSelStud, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, labelSubjectMaxLayout.createSequentialGroup()
+                    .addGroup(labelSubjectMaxLayout.createSequentialGroup()
                         .addComponent(labelStudPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tbStudPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAddSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(labelSubjectMaxLayout.createSequentialGroup()
+                        .addComponent(btnStart)
+                        .addGap(18, 18, 18)
                         .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbAdmin)
                             .addGroup(labelSubjectMaxLayout.createSequentialGroup()
-                                .addComponent(btnStart)
+                                .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(labelPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(labelUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbAdmin)
-                                    .addGroup(labelSubjectMaxLayout.createSequentialGroup()
-                                        .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(labelPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(labelUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(tfUserName)
-                                            .addComponent(tfPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnConnect, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(labelSubjectMaxLayout.createSequentialGroup()
-                                .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelAddStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(labelSubjectMaxLayout.createSequentialGroup()
-                                        .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(lIndex, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(labelStudName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(labelStudLastName, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labelStudJMBG, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(labelStudUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(tbStudName)
-                                            .addComponent(tbStudLastName)
-                                            .addComponent(tbStudJMBG)
-                                            .addComponent(tbStudUsername)
-                                            .addComponent(tfIndex, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))))
-                                .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(labelSubjectMaxLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(labelSubjMin, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(labelSubjectMaxLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(labelSubjectMaxLayout.createSequentialGroup()
-                                                .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(labelSubjectName, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(labelSubjectParts, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(tfSubjectName)
-                                                    .addComponent(tfSubjectParts)
-                                                    .addComponent(tfSubjectMax)
-                                                    .addComponent(tfSubjMin, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(labelSubjectMaxLayout.createSequentialGroup()
-                                                .addComponent(labelNumOfParts, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addGroup(labelSubjectMaxLayout.createSequentialGroup()
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(labelSubj, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(labelSubjectMaxLayout.createSequentialGroup()
-                                                        .addGap(21, 21, 21)
-                                                        .addComponent(tfNumOfParts)
-                                                        .addGap(6, 6, 6))))))))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tfUserName)
+                                    .addComponent(tfPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnConnect, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(labelSubjectMaxLayout.createSequentialGroup()
+                        .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelAddStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(labelSubjectMaxLayout.createSequentialGroup()
                                 .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(labelPasswordAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(labelUsernameAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lIndex, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(labelStudName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelStudLastName, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelStudJMBG, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelStudUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tbStudName)
+                                    .addComponent(tbStudLastName)
+                                    .addComponent(tbStudJMBG)
+                                    .addComponent(tbStudUsername)
+                                    .addComponent(tfIndex, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))))
+                        .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(labelSubjectMaxLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(labelSubjMin, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(labelSubjectMaxLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
                                 .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(labelSubjectMaxLayout.createSequentialGroup()
+                                        .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(labelSubjectName, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(labelSubjectParts, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, labelSubjectMaxLayout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addComponent(tbUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCheckScore))
-                            .addGroup(labelSubjectMaxLayout.createSequentialGroup()
-                                .addComponent(btnAddAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbSubjects, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAddToStd)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                .addContainerGap())
+                                        .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(tfSubjectName)
+                                            .addComponent(tfSubjectParts)
+                                            .addComponent(tfSubjectMax)
+                                            .addComponent(tfSubjMin, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(labelSubjectMaxLayout.createSequentialGroup()
+                                        .addComponent(labelNumOfParts, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(labelSubjectMaxLayout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(labelSubj, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(labelSubjectMaxLayout.createSequentialGroup()
+                                                .addGap(21, 21, 21)
+                                                .addComponent(tfNumOfParts)
+                                                .addGap(6, 6, 6))))))))
+                    .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, labelSubjectMaxLayout.createSequentialGroup()
+                            .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(labelPasswordAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelUsernameAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(labelSubjectMaxLayout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, labelSubjectMaxLayout.createSequentialGroup()
+                                    .addGap(4, 4, 4)
+                                    .addComponent(tbUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(18, 18, 18)
+                            .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(labelSubjectMaxLayout.createSequentialGroup()
+                                    .addComponent(lChangeScore, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnChange, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnCheckScore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, labelSubjectMaxLayout.createSequentialGroup()
+                            .addComponent(btnAddAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(labelSubjectMaxLayout.createSequentialGroup()
+                                    .addComponent(lPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(tfPoints))
+                                .addGroup(labelSubjectMaxLayout.createSequentialGroup()
+                                    .addComponent(lPartName, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(tfPartName))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, labelSubjectMaxLayout.createSequentialGroup()
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(44, 44, 44)
+                            .addComponent(cbSubjects, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnAddToStd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         labelSubjectMaxLayout.setVerticalGroup(
             labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,7 +407,7 @@ public class EeIndex extends javax.swing.JFrame {
                 .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(labelSubjectMaxLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(labelSubjectMaxLayout.createSequentialGroup()
                         .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(labelSubjectMaxLayout.createSequentialGroup()
@@ -395,9 +436,10 @@ public class EeIndex extends javax.swing.JFrame {
                                         .addComponent(tfSubjectName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(labelSubjectName, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelStudLastName))
+                                .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(labelStudLastName)
+                                    .addComponent(tbStudLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(tbStudLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(labelNumOfParts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(tfNumOfParts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -428,29 +470,32 @@ public class EeIndex extends javax.swing.JFrame {
                             .addComponent(labelSelectStud)
                             .addComponent(cbSelStud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnAddStudent))
-                        .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(labelSubjectMaxLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cbSubjects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnAddToStd))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCheckScore)
-                                .addGap(48, 48, 48))
-                            .addGroup(labelSubjectMaxLayout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(labelUsernameAdmin)
-                                    .addComponent(tbUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                                .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(labelPasswordAdmin)
-                                    .addComponent(tbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAddAdmin)
-                                .addContainerGap())))))
+                        .addGap(9, 9, 9)
+                        .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(cbSubjects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAddToStd))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelUsernameAdmin)
+                            .addComponent(tbUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCheckScore))
+                        .addGap(12, 12, 12)
+                        .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelPasswordAdmin)
+                            .addComponent(tbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lChangeScore, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnChange))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAddAdmin)
+                            .addComponent(tfPartName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lPartName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfPoints, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -532,11 +577,18 @@ public class EeIndex extends javax.swing.JFrame {
             cbSubjects.setEnabled(true);
             cbSelStud.setEnabled(true);
             btnCheckScore.setEnabled(true);
+            cbAdmin.setEnabled(false);
+            lChangeScore.setEnabled(true);
+            lPoints.setEnabled(true);
+            tfPoints.setEnabled(true);
+            lPartName.setEnabled(true);
+            tfPartName.setEnabled(true);
+            btnChange.setEnabled(true);
         }else if(this.login(tfUserName.getText(),tfPassword.getText(),cbAdmin.isSelected()) == 2){
             //System.out.println("Student logged: ");
             cbSubjects.setEnabled(true);
             btnCheckScore.setEnabled(true);
-            
+            cbAdmin.setEnabled(false);
         }
         
         ArrayList<String> cbSubj = new ArrayList<>();
@@ -638,12 +690,24 @@ public class EeIndex extends javax.swing.JFrame {
 
     private void btnCheckScoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckScoreActionPerformed
         // TODO add your handling code here:
-        String username = tfUserName.getText();
+        boolean tempExists = false;
         Student stud = null;
-        for(Student s: students){
-            if(username.equals(s.getUserName())){
-                stud = s;
-                break;
+        if(!cbAdmin.isSelected()) {
+            String username = tfUserName.getText();
+            for(Student s: students){
+                if(username.equals(s.getUserName())){
+                    stud = s;
+                    break;
+                }
+            }
+        }else{
+            String index = cbSelStud.getSelectedItem().toString();
+            for(Student s: students){
+                if(index.equals(s.getIndex())){
+                    stud = s;
+                    System.out.println("Student pronadjen");
+                    break;
+                }
             }
         }
         String message = new String();
@@ -655,15 +719,27 @@ public class EeIndex extends javax.swing.JFrame {
         for(Subject subject: stud.getSubjects()){
             if(subject.getSubjectName().equals(cbSubjects.getSelectedItem().toString())){
                 subj = subject;
+                tempExists = true;
                 break;
             }
         }
+        if(tempExists == true){
         message += "Ime predmeta: "+subj.getSubjectName() + "\n";
-        for(int i = 0; i < subj.getNumberOfParts(); i++){
-            message += (i+1) + ". deo: "+ subj.getPartsName().get(i)+": " + subj.getObtainedPoints().get(i)+ "\n";
+        
+        int allPoints = 0;
+        for (int i = 0; i < subj.getNumberOfParts(); i++){
+            allPoints += subj.getObtainedPoints().get(i);
         }
+        for(int i = 0; i < subj.getNumberOfParts(); i++){
+            message += (i+1) + ". deo: "+ subj.getPartsName().get(i)+": " + subj.getObtainedPoints().get(i)+
+                    " max: "+ subj.getMaxPoints().get(i) + " min: "+ subj.getMinPoints().get(i)  +"\n";
+        }
+        message += "Summ points:" +allPoints + "\n";
         message += "Grade: "+subj.getGrade() + "\n";
         taInfo.setText(message);
+        }else{
+             taInfo.setText("Izabrani student ne pohadja izabrani predmet");
+        }
     }//GEN-LAST:event_btnCheckScoreActionPerformed
 
     private void btnAddToStdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToStdActionPerformed
@@ -721,6 +797,47 @@ public class EeIndex extends javax.swing.JFrame {
         saveStudents();
     }//GEN-LAST:event_btnAddToStdActionPerformed
 
+    private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
+        // TODO add your handling code here:
+        Student stud = null;
+        String index = cbSelStud.getSelectedItem().toString();
+        for(Student s: students){
+            if(index.equals(s.getIndex())){
+                stud = s;
+                System.out.println("Student found, change points");
+                break;
+            }
+        }
+        
+        Subject newSubject = null;
+        for(Subject subj: stud.getSubjects()){
+            if(subj.getSubjectName().equals(cbSubjects.getSelectedItem().toString())){
+                newSubject = subj;
+                System.out.println("Subjest found, change points");
+                break;
+            }
+        }
+        
+        String namePart = tfPartName.getText();
+        int numOfPoints = Integer.parseInt(tfPoints.getText());
+        
+        for(int i = 0; i < newSubject.getPartsName().size(); i++){
+            if(newSubject.getPartsName().get(i).equals(namePart)){
+                int temp = i;
+                System.out.println("Part found");
+                if(numOfPoints <= newSubject.getMaxPoints().get(temp)){
+                    newSubject.changePoints(temp, numOfPoints);
+                    System.out.println("Points succesfully changed");
+                    newSubject.calculateGrade();
+                }else{
+                    System.out.println("Num of points larger then max");
+                }
+                break;
+            }
+        }
+        saveStudents();
+    }//GEN-LAST:event_btnChangeActionPerformed
+
     public static void main(String args[]) {
         loadUsers();
         loadSubjects();
@@ -731,6 +848,7 @@ public class EeIndex extends javax.swing.JFrame {
         for(Student st: students){
             st.printSubject();
         }
+        System.out.println("MAKSI MAKSI MAKSI MAKSI MAAKSIMALNO " + students.get(0).getSubjects().get(0).getMaxPoints().get(0));
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -767,6 +885,7 @@ public class EeIndex extends javax.swing.JFrame {
     private javax.swing.JButton btnAddStudent;
     private javax.swing.JButton btnAddSubject;
     private javax.swing.JButton btnAddToStd;
+    private javax.swing.JButton btnChange;
     private javax.swing.JButton btnCheckScore;
     private javax.swing.JButton btnConnect;
     private javax.swing.JButton btnStart;
@@ -776,7 +895,10 @@ public class EeIndex extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lChangeScore;
     private javax.swing.JLabel lIndex;
+    private javax.swing.JLabel lPartName;
+    private javax.swing.JLabel lPoints;
     private javax.swing.JLabel labelAddStudent;
     private javax.swing.JLabel labelNumOfParts;
     private javax.swing.JLabel labelPassword;
@@ -804,7 +926,9 @@ public class EeIndex extends javax.swing.JFrame {
     private javax.swing.JTextField tbUsername;
     private javax.swing.JTextField tfIndex;
     private javax.swing.JTextField tfNumOfParts;
+    private javax.swing.JTextField tfPartName;
     private javax.swing.JTextField tfPassword;
+    private javax.swing.JTextField tfPoints;
     private javax.swing.JTextField tfSubjMin;
     private javax.swing.JTextField tfSubjectMax;
     private javax.swing.JTextField tfSubjectName;
@@ -873,10 +997,10 @@ public class EeIndex extends javax.swing.JFrame {
                     partsName.add(tokens[i+2]);
                 }
                 for(int i = 0; i < numOfParts; i++){
-                    minPoints.add(Integer.parseInt(tokens[i+2+numOfParts]));
+                    maxPoints.add(Integer.parseInt(tokens[i+2+numOfParts]));
                 }
                 for(int i = 0; i < numOfParts ; i++){
-                    maxPoints.add(Integer.parseInt(tokens[i+2+2*numOfParts]));
+                    minPoints.add(Integer.parseInt(tokens[i+2+2*numOfParts]));
                 }
                 Subject subj = new Subject(subject_name, numOfParts,partsName, minPoints, maxPoints);
                 subjects.add(subj);
@@ -928,13 +1052,14 @@ public class EeIndex extends javax.swing.JFrame {
                     int numOfParts = Integer.parseInt(tokens[offset++]);
                     
                     ArrayList<String> partsName = new ArrayList<>();
-                    ArrayList<Integer> minPoints = new ArrayList<>();
                     ArrayList<Integer> maxPoints = new ArrayList<>();
+                    ArrayList<Integer> minPoints = new ArrayList<>();
                     ArrayList<Integer> obtainedPoints = new ArrayList<>();
                     
                     for(int i = 0; i < numOfParts; i++){
                         partsName.add(tokens[offset++]);
                     }
+                    
                     for(int i = 0; i < numOfParts; i++){
                         maxPoints.add(Integer.parseInt(tokens[offset++]));
                     }
@@ -945,7 +1070,7 @@ public class EeIndex extends javax.swing.JFrame {
                         obtainedPoints.add(Integer.parseInt(tokens[offset++]));
                     }
                     int grade = Integer.parseInt(tokens[offset++]);
-                    Subject subjTemp = new Subject(subject_name,numOfParts,partsName,minPoints,maxPoints,
+                    Subject subjTemp = new Subject(subject_name,numOfParts,partsName,maxPoints,minPoints,
                                                   obtainedPoints, grade);
                     subj.add(subjTemp);
                 }
