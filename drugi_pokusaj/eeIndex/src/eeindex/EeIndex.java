@@ -228,6 +228,11 @@ public class EeIndex extends javax.swing.JFrame {
 
         btnAddToStd.setText("Add to student");
         btnAddToStd.setEnabled(false);
+        btnAddToStd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddToStdActionPerformed(evt);
+            }
+        });
 
         labelSelectStud.setText("Selektruj studenta:");
         labelSelectStud.setEnabled(false);
@@ -265,7 +270,7 @@ public class EeIndex extends javax.swing.JFrame {
                         .addComponent(labelStudPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tbStudPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                         .addComponent(btnAddSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(labelSubjectMaxLayout.createSequentialGroup()
                         .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,26 +337,24 @@ public class EeIndex extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(labelSubjectMaxLayout.createSequentialGroup()
                                 .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, labelSubjectMaxLayout.createSequentialGroup()
-                                        .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(labelPasswordAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(labelUsernameAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(labelSubjectMaxLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(tbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, labelSubjectMaxLayout.createSequentialGroup()
-                                                .addGap(4, 4, 4)
-                                                .addComponent(tbUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnCheckScore, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, labelSubjectMaxLayout.createSequentialGroup()
-                                        .addComponent(btnAddAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cbSubjects, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(labelPasswordAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(labelUsernameAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(labelSubjectMaxLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, labelSubjectMaxLayout.createSequentialGroup()
+                                        .addGap(4, 4, 4)
+                                        .addComponent(tbUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
-                                .addComponent(btnAddToStd, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 18, Short.MAX_VALUE)))
+                                .addComponent(btnCheckScore))
+                            .addGroup(labelSubjectMaxLayout.createSequentialGroup()
+                                .addComponent(btnAddAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbSubjects, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnAddToStd)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                 .addContainerGap())
@@ -528,6 +531,7 @@ public class EeIndex extends javax.swing.JFrame {
             btnAddToStd.setEnabled(true);
             cbSubjects.setEnabled(true);
             cbSelStud.setEnabled(true);
+            btnCheckScore.setEnabled(true);
         }else if(this.login(tfUserName.getText(),tfPassword.getText(),cbAdmin.isSelected()) == 2){
             //System.out.println("Student logged: ");
             cbSubjects.setEnabled(true);
@@ -662,9 +666,61 @@ public class EeIndex extends javax.swing.JFrame {
         taInfo.setText(message);
     }//GEN-LAST:event_btnCheckScoreActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnAddToStdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToStdActionPerformed
+
+        boolean alreadyAdded = false;
+        boolean subjectExists = false;
+        
+        String index = cbSelStud.getSelectedItem().toString();
+        Student stud = null;
+        // Check if there is student with index, and select it
+        for(Student s: students){
+            if(index.equals(s.getIndex())){
+                stud = s;
+                System.out.println("Student pronadjen");
+                break;
+            }
+        }
+        
+        // Check if selected subject is already added to Student
+        for(Subject subject: stud.getSubjects()){
+            if(subject.getSubjectName().equals(cbSubjects.getSelectedItem().toString())){
+                alreadyAdded = true;
+                System.out.println("Predmet jeste dodat");
+                break;
+            }
+        }
+        
+        // Find subject
+        Subject newSubject = null;
+        for(Subject subj: subjects){
+            if(subj.getSubjectName().equals(cbSubjects.getSelectedItem().toString())){
+                newSubject = subj;
+                System.out.println("Predmet pronadjen");
+                break;
+            }
+        }
+        
+        if(alreadyAdded == false){
+            stud.setNumOfSubjects(stud.getNumOfSubjects() + 1);
+            ArrayList<Integer> obtainedP = new ArrayList<>();
+            System.out.println(newSubject.getNumberOfParts());
+            for (int i = 0; i < newSubject.getNumberOfParts(); i++) {
+                obtainedP.add(0);
+            }
+            
+            newSubject.setObtained_points(obtainedP);
+            newSubject.setGrade(5);
+            
+            ArrayList<Subject> tempSubject = new ArrayList<>();
+            tempSubject = stud.getSubjects();
+            tempSubject.add(newSubject);
+            stud.setSubjects(tempSubject);
+            System.out.println("Dodat predmet, inkrementovan broj predmeta");
+        }
+        saveStudents();
+    }//GEN-LAST:event_btnAddToStdActionPerformed
+
     public static void main(String args[]) {
         loadUsers();
         loadSubjects();

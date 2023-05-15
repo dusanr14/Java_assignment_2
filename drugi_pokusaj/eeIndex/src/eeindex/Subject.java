@@ -60,6 +60,11 @@ class Subject {
     public ArrayList<Integer> getObtainedPoints() {
         return obtainedPoints;
     }
+    
+    public void setObtainedPointsPart(int points, int position) {
+        if(this.maxPoints.get(position) > points)
+        this.obtainedPoints.set(position, points);
+    }
 
     public void setObtained_points(ArrayList<Integer> obtained_points) {
         this.obtainedPoints = obtained_points;
