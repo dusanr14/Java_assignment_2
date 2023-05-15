@@ -95,6 +95,7 @@ public class EeIndex extends javax.swing.JFrame {
         lPoints = new javax.swing.JLabel();
         tfPoints = new javax.swing.JTextField();
         btnChange = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -280,6 +281,13 @@ public class EeIndex extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("EXIT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout labelSubjectMaxLayout = new javax.swing.GroupLayout(labelSubjectMax);
         labelSubjectMax.setLayout(labelSubjectMaxLayout);
         labelSubjectMaxLayout.setHorizontalGroup(
@@ -397,7 +405,9 @@ public class EeIndex extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btnAddToStd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
         labelSubjectMaxLayout.setVerticalGroup(
@@ -490,7 +500,8 @@ public class EeIndex extends javax.swing.JFrame {
                         .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAddAdmin)
                             .addComponent(tfPartName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lPartName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(lPartName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(labelSubjectMaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -503,9 +514,9 @@ public class EeIndex extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addGap(44, 44, 44)
                 .addComponent(labelSubjectMax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(25, 25, 25))
+                .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -838,6 +849,14 @@ public class EeIndex extends javax.swing.JFrame {
         saveStudents();
     }//GEN-LAST:event_btnChangeActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        saveStudents();
+        saveUsers();
+        saveSubjects();
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public static void main(String args[]) {
         loadUsers();
         loadSubjects();
@@ -892,6 +911,7 @@ public class EeIndex extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbAdmin;
     private javax.swing.JComboBox<String> cbSelStud;
     private javax.swing.JComboBox<String> cbSubjects;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1002,7 +1022,7 @@ public class EeIndex extends javax.swing.JFrame {
                 for(int i = 0; i < numOfParts ; i++){
                     minPoints.add(Integer.parseInt(tokens[i+2+2*numOfParts]));
                 }
-                Subject subj = new Subject(subject_name, numOfParts,partsName, minPoints, maxPoints);
+                Subject subj = new Subject(subject_name, numOfParts,partsName, maxPoints, minPoints);
                 subjects.add(subj);
             }
         } catch (IOException e) {

@@ -20,3 +20,6 @@ p:p:student
 asd:asd:student
 asd:asd:student
 nata:nata123:student
+mita:mita1:student
+perica:1234:student
+pera:perica123:student
